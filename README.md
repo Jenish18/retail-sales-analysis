@@ -157,5 +157,5 @@ Created as a portfolio project to demonstrate SQL analytics, Python data process
 
 ![Based on region] (![alt text](<screenshots/regional performance.png>))
 
-## Discout
+## Discount
 ![Discount_analysis] (![alt text](<screenshots/discount analysis.png>))
