@@ -148,3 +148,14 @@ The current KPI validation script checks record count, sales, profit, profit mar
 ## Author
 
 Created as a portfolio project to demonstrate SQL analytics, Python data processing, database integration, business intelligence, and dashboard development.
+
+## Dashboard 
+![Dashboard overview] (![alt text](screenshots/dashboard.png))
+
+## Performance
+![Based on category] (![alt text](<screenshots/catagory performance.png>))
+
+![Based on region] (![alt text](<screenshots/regional performance.png>))
+
+## Discout
+![Discount_analysis] (![alt text](<screenshots/discount analysis.png>))
