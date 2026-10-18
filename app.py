@@ -20,16 +20,34 @@ st.title("🛒 Supermart Sales Intelligence Dashboard")
 st.caption("Sales | Profitability | Discount | Regional Performance")
 
 # ---------------------------
+
+# ---------------------------
 # 2. Database connection
 # ---------------------------
 @st.cache_resource
 def get_engine():
+    database_url = os.getenv("NEON_DATABASE_URL")
+
+    if database_url:
+        # Cloud database: Neon
+        return create_engine(
+            database_url.replace(
+                "postgresql://",
+                "postgresql+psycopg://",
+                1,
+            ) if database_url.startswith("postgresql://")
+            else database_url,
+            pool_pre_ping=True,
+            pool_recycle=300,
+        )
+
+    # Fallback: local PostgreSQL
     password = os.getenv("PGPASSWORD")
 
     if not password:
         raise RuntimeError(
-            "PGPASSWORD is missing. Set it in your terminal before "
-            "starting the dashboard."
+            "Database configuration missing. Set NEON_DATABASE_URL "
+            "for Neon, or PGPASSWORD for local PostgreSQL."
         )
 
     url = URL.create(
@@ -56,7 +74,7 @@ def load_data():
             sales,
             profit,
             discount
-        FROM supermart_sales
+        FROM public.supermart_sales
         WHERE order_date IS NOT NULL
     """)
 
@@ -67,7 +85,6 @@ def load_data():
     return df
 
 
-# ---------------------------
 # 3. Load data safely
 # ---------------------------
 try:
