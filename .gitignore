@@ -1,0 +1,35 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Local database backups
+*.sql
+*.dump
+*.backup
+
+# Raw and processed datasets
+# Keep data folders in Git, but exclude CSV data files
+data/raw/*.csv
+data/processed/*.csv
